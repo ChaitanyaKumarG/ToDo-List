@@ -1,0 +1,17 @@
+.box{
+ border: 0.1px solid rgba(0, 0, 0, 0.359);
+}
+::placeholder{
+    color:darkgray;
+}
+body{
+background-image: url(https://wallpapercave.com/wp/wp2855649.jpg);
+font-family:Arial, Helvetica, sans-serif;
+}
+input:checked+h4{
+    text-decoration: line-through;
+}
+.form-control:focus {
+    border-color: #ff80ff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0) inset, 0px 0px 8px rgba(255, 100, 255, 0);
+}
