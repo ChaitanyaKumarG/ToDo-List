@@ -2,21 +2,28 @@ const express = require("express")
 const bodyParser = require("body-parser")
 
 const app = express()
+var NEWITEMS = []
 
 app.use(express.static("public"))
-app.set('view engine' , 'ejs')
+app.set('view engine', 'ejs')
 
-app.use(bodyParser.urlencoded({extended: true}))
-
-
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
-app.get("/",(req,res)=>{
-    n1 = "chay"
-    res.render("lists",{name:n1})
+
+
+app.get("/", (req, res) => {
+
+    res.render("lists", { name: NEWITEMS })        ///accessing the var data which is at top of the app bcoz render method accepts only in the route data.
 })
 
 
-app.listen(process.env.PORT || 2255, ()=>{
+app.post("/", (req, res) => {
+    var NEWITEM = req.body.newItem               //getting post request data
+    NEWITEMS.push(NEWITEM)                //sending post data to var at top of app
+    res.redirect("/")               //redirecting to homepage after post request sent
+})
+
+app.listen(process.env.PORT || 2255, () => {
     console.log("SERVER RUNNING AT PORT 2255");
 })
